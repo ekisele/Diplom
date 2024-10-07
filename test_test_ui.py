@@ -21,7 +21,7 @@ def test_search(driver):
     isFound = uipage.search('2021')
     assert isFound == True
 
-    isFound = uipage.search('ответ }{*?,/')
+    isFound = uipage.search('ответ  }{*?,/')
     assert isFound == True
 
     # добавление в корзину
