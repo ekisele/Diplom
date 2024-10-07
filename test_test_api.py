@@ -1,8 +1,7 @@
 from pages.api_class import apiClass
 
+
 api = apiClass("https://web-gate.chitai-gorod.ru/api/v2/search/facet-search?phrase=")
-
-
 
 #Поиск по полному названию книги
 def test_search_full_description():

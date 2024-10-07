@@ -6,6 +6,7 @@ def test_search(driver):
     uipage.set_cookie_policy()
 
     # ввод разных значений в строку "Поиск"
+    
     isFound = uipage.search('Анна Каренина')
     assert isFound == True
 

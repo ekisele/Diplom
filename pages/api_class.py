@@ -1,5 +1,7 @@
 import requests
-from conftest import authorization
+import allure
+
+# from conftest import authorization
 
 class apiClass:
 
@@ -10,7 +12,7 @@ class apiClass:
 
     def get_token(self):
         auth_headers = {
-            authorization
+            'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3VzZXItcmlnaHQiLCJzdWIiOjE2NzQ5NTMyLCJpYXQiOjE3MjgyMzQzMDIsImV4cCI6MTcyODIzNzkwMiwidHlwZSI6MjB9.vL7C0G31w9OxVJQnbJuTfMEBXdDGv6zmnkbTTUu6XOE'
         }
         return auth_headers
     
