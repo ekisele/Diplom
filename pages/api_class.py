@@ -1,6 +1,4 @@
 import requests
-import allure
-
 # from conftest import authorization
 
 class apiClass:

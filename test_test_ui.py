@@ -1,31 +1,28 @@
 from pages.ui_class import UiPage
+import allure
 
+@allure.step("Проверка поиска книг и добавления в корзину")
 def test_search(driver):
-
     uipage = UiPage(driver)
     uipage.set_cookie_policy()
 
-    # ввод разных значений в строку "Поиск"
+    # Ввод различных значений в строку "Поиск" и проверка результата
+    search_terms = [
+        ('Анна Каренина', True),
+        ('Beautifull girl', True),
+        ('ГОГОЛЬ', True),
+        ('михаил лабковский', True),
+        ('2021', True),
+        ('ответ  }{*?,/', True)
+    ]
     
-    isFound = uipage.search('Анна Каренина')
-    assert isFound == True
+    for term, expected in search_terms:
+        with allure.step(f"Поиск по термину: {term}"):
+            isFound = uipage.search(term)
+            assert isFound == expected
 
-    isFound = uipage.search('Beautifull girl')
-    assert isFound == True
-
-    isFound = uipage.search('ГОГОЛЬ')
-    assert isFound == True
-
-    isFound = uipage.search('михаил лабковский')
-    assert isFound == True
-
-    isFound = uipage.search('2021')
-    assert isFound == True
-
-    isFound = uipage.search('ответ  }{*?,/')
-    assert isFound == True
-
-    # добавление в корзину
-    uipage.search('Магия утра')
-    count_in_cart = uipage.AddToCart()
-    assert count_in_cart == 1
+    # Добавление товара в корзину
+    with allure.step("Добавление книги 'Магия утра' в корзину"):
+        uipage.search('Магия утра')
+        count_in_cart = uipage.AddToCart()
+        assert count_in_cart == 1
